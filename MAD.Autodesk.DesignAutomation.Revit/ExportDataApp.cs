@@ -2,22 +2,23 @@
 using System.IO;
 
 using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using DesignAutomationFramework;
 
-namespace DeleteWalls
+namespace MAD.Autodesk.DesignAutomation.Revit
 {
-   [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
-   [Autodesk.Revit.Attributes.Transaction(Autodesk.Revit.Attributes.TransactionMode.Manual)]
-   public class DeleteWallsApp : IExternalDBApplication
+   [Regeneration(RegenerationOption.Manual)]
+   [Transaction(TransactionMode.Manual)]
+   public class ExportDataApp : IExternalDBApplication
    {
-      public ExternalDBApplicationResult OnStartup(Autodesk.Revit.ApplicationServices.ControlledApplication app)
+      public ExternalDBApplicationResult OnStartup(ControlledApplication app)
       {
          DesignAutomationBridge.DesignAutomationReadyEvent += HandleDesignAutomationReadyEvent;
          return ExternalDBApplicationResult.Succeeded;
       }
 
-      public ExternalDBApplicationResult OnShutdown(Autodesk.Revit.ApplicationServices.ControlledApplication app)
+      public ExternalDBApplicationResult OnShutdown(ControlledApplication app)
       {
          return ExternalDBApplicationResult.Succeeded;
       }

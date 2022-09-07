@@ -7,8 +7,8 @@
     <ProjectGuid>{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeleteWalls</RootNamespace>
-    <AssemblyName>DeleteWalls-Design-Automation</AssemblyName>
+    <RootNamespace>MAD.Autodesk.DesignAutomation.Revit</RootNamespace>
+    <AssemblyName>MAD.Autodesk.DesignAutomation.Revit</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -32,11 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DesignAutomationBridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autodesk.Forge.DesignAutomation.Revit.2021.0.1\lib\net48\DesignAutomationBridge.dll</HintPath>
+      <HintPath>..\packages\Autodesk.Forge.DesignAutomation.Revit.2018.0.1\lib\net47\DesignAutomationBridge.dll</HintPath>
     </Reference>
-    <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="RevitAPI, Version=18.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Revit.RevitApi.x64.2018.0.0\lib\net45\RevitAPI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -48,14 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeleteWalls.cs" />
+    <Compile Include="ExportDataApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PackageContents.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
-    <Content Include="DeleteWalls-Design-Automation.addin">
+    <Content Include="MAD.Autodesk.DesignAutomation.Revit.addin">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -64,10 +63,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "%25ProgramData%25/Autodesk\Revit\Addins\2021\"
-xcopy "$(TargetDir)*.pdb" "%25ProgramData%25/Autodesk\Revit\Addins\2021\"
-xcopy "$(ProjectDir)DeleteWalls-Design-Automation.addin" "%25ProgramData%25/Autodesk\Revit\Addins\2021\"
-xcopy "$(SolutionDir)packages\Autodesk.Forge.DesignAutomation.Revit.2021.0.1\lib\net48\DesignAutomationBridge.dll" "%25ProgramData%25/Autodesk\Revit\Addins\2021\"</PostBuildEvent>
+    <!-- PostBuildEvent>xcopy "$(TargetPath)" "%25ProgramData%25/Autodesk\Revit\Addins\2018\"
+xcopy "$(TargetDir)*.pdb" "%25ProgramData%25/Autodesk\Revit\Addins\2018\"
+xcopy "$(ProjectDir)DeleteWalls-Design-Automation.addin" "%25ProgramData%25/Autodesk\Revit\Addins\2018\"
+xcopy "$(SolutionDir)packages\Autodesk.Forge.DesignAutomation.Revit.2018.0.1\lib\net47\DesignAutomationBridge.dll" "%25ProgramData%25/Autodesk\Revit\Addins\2018\"
+</PostBuildEvent -->
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

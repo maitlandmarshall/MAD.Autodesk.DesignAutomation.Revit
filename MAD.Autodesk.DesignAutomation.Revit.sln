@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAD.Autodesk.DesignAutomation.Revit", "DeleteWallsApp\MAD.Autodesk.DesignAutomation.Revit.csproj", "{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAD.Autodesk.DesignAutomation.Revit", "MAD.Autodesk.DesignAutomation.Revit\MAD.Autodesk.DesignAutomation.Revit.csproj", "{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
