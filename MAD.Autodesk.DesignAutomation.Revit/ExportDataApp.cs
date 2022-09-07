@@ -33,6 +33,8 @@ namespace MAD.Autodesk.DesignAutomation.Revit
             var dataReader = new DataReader(e.DesignAutomationData);
             var elementsToSave = dataReader.GetElements().ToList();
             var entitiesToSave = dataReader.GetEntitiesFromElements(elementsToSave).ToList();
+
+            var groupByType = entitiesToSave.GroupBy(y => y.Type).ToList();
         }
 
         public static void DeleteAllWalls(DesignAutomationData data)

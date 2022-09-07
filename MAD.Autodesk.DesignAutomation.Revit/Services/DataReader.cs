@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Architecture;
+using Autodesk.Revit.DB.ExtensibleStorage;
 using Autodesk.Revit.DB.Mechanical;
 using DesignAutomationFramework;
 using System;
@@ -31,36 +32,51 @@ namespace MAD.Autodesk.DesignAutomation.Revit.Services
             foreach (var element in elements)
             {
                 // Convert the element's parameters into an entity
-                var p = this.GetEntityFromElement(element).ToList();
+                var type = element.GetType().Name;
+                var p = this.GetEntityFromElement(element, type).ToList();
 
                 yield return new DataReaderEntity
                 {
                     Values = p.ToDictionary(y => y.Key, y => y.Value),
-                    Type = element.GetType().Name,
+                    Type = type,
                     Id = element.Id.IntegerValue
                 };
             }
         }
 
-        public IEnumerable<KeyValuePair<string, object>> GetEntityFromElement(Element e)
+        public IEnumerable<KeyValuePair<string, object>> GetEntityFromElement(Element e, string type)
         {
             var elementParams = e.GetOrderedParameters();
             var paramNames = new HashSet<string>();
-
-            var m = e.GetAnalyticalModel();
 
             yield return new KeyValuePair<string, object>("Id", e.Id.IntegerValue);
             yield return new KeyValuePair<string, object>("Name", e.Name);
             yield return new KeyValuePair<string, object>("CategoryId", e.Category?.Id?.IntegerValue);
             yield return new KeyValuePair<string, object>("CategoryName", e.Category?.Name);
 
+            var elementType = e.Document.GetElement(e.GetTypeId()) as ElementType;
+
+            if (elementType != null)
+            {
+                yield return new KeyValuePair<string, object>("FamilyName", elementType.FamilyName);
+                yield return new KeyValuePair<string, object>("TypeName", elementType.Name);
+                
+                var typeParams = elementType.GetOrderedParameters();
+
+                foreach (var p in typeParams)
+                {
+                    var value = p.AsValueString();
+                    var key = $"Type_{p.Definition.ParameterGroup.ToString()}_{p.Definition.Name}";
+
+                    yield return new KeyValuePair<string, object>(key, value);
+                }
+            }
+
+
             foreach (var p in elementParams)
             {
                 var value = p.AsValueString();
-                var key = $"{p.Definition.Name}{p.Id}";
-
-                if (!paramNames.Add(key))
-                    continue;
+                var key = $"{p.Definition.ParameterGroup.ToString()}_{p.Definition.Name}";
 
                 yield return new KeyValuePair<string, object>(key, value);
             }
