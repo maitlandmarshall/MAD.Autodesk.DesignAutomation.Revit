@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ApplicationPackage>
-  <Components Description="Delete Walls">
+  <Components Description="Export RVT database as zipped csvs">
     <RuntimeRequirements OS="Win64" 
                          Platform="Revit" 
                          SeriesMin="R2018" 
                          SeriesMax="R2018" />
-    <ComponentEntry AppName="DeleteWalls" 
+    <ComponentEntry AppName="MAD.Autodesk.DesignAutomation.Revit" 
                     Version="1.0.0" 
-                    ModuleName="./Contents/DeleteWalls.addin" 
-                    AppDescription="Deletes walls" 
+                    ModuleName="./Contents/MAD.Autodesk.DesignAutomation.Revit.addin" 
+                    AppDescription="Export RVT database as zipped csvs" 
                     LoadOnCommandInvocation="False" 
                     LoadOnRevitStartup="True" />
   </Components>

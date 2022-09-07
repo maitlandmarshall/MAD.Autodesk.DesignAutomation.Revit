@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
   <AddIn Type="DBApplication">
-    <Name>DeleteWalls</Name>
-    <Assembly>.\DeleteWalls-Design-Automation.dll</Assembly>
-    <AddInId>d7fe1983-8f10-4983-98e2-c3cc332fc978</AddInId>
-    <FullClassName>DeleteWalls.DeleteWallsApp</FullClassName>
-    <Description>"Deletes Walls by Design Automation"</Description>
+    <Name>MAD.Autodesk.DesignAutomation.Revit</Name>
+    <Assembly>MAD.Autodesk.DesignAutomation.Revit.dll</Assembly>
+    <AddInId>883708c2-2718-4b61-bb09-494a412abadc</AddInId>
+    <FullClassName>MAD.Autodesk.DesignAutomation.Revit.ExportDataApp</FullClassName>
+    <Description>"Converts the RVT database into a zip of CSVs"</Description>
     <VendorId>Autodesk</VendorId>
     <VendorDescription>
     </VendorDescription>

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAD.Autodesk.DesignAutomation.Revit", "MAD.Autodesk.DesignAutomation.Revit\MAD.Autodesk.DesignAutomation.Revit.csproj", "{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignAutomationHandler2018", "DesignAutomationHandler2018\DesignAutomationHandler2018.csproj", "{EFB263DA-A3C0-4789-9D73-F74351DCC26D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B34EFEC-5F75-4EFB-80AA-4629F80D3D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB263DA-A3C0-4789-9D73-F74351DCC26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB263DA-A3C0-4789-9D73-F74351DCC26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB263DA-A3C0-4789-9D73-F74351DCC26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB263DA-A3C0-4789-9D73-F74351DCC26D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
