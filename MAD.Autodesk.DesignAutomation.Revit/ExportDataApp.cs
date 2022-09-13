@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
@@ -7,6 +9,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.ExtensibleStorage;
 using DesignAutomationFramework;
 using MAD.Autodesk.DesignAutomation.Revit.Services;
+using Newtonsoft.Json;
 
 namespace MAD.Autodesk.DesignAutomation.Revit
 {
@@ -33,33 +36,28 @@ namespace MAD.Autodesk.DesignAutomation.Revit
             var dataReader = new DataReader(e.DesignAutomationData);
             var elementsToSave = dataReader.GetElements().ToList();
             var entitiesToSave = dataReader.GetEntitiesFromElements(elementsToSave).ToList();
-
             var groupByType = entitiesToSave.GroupBy(y => y.Type).ToList();
+
+            this.SaveEntitiesToOutput(groupByType);
         }
 
-        public static void DeleteAllWalls(DesignAutomationData data)
+        private void SaveEntitiesToOutput(IEnumerable<IGrouping<string, DataReaderEntity>> entitiesGroupedByType)
         {
-            if (data == null) throw new ArgumentNullException(nameof(data));
+            var currentDir = Directory.GetCurrentDirectory();
+            var outputFolder = Path.Combine(currentDir, "outputJson");
 
-            Application rvtApp = data.RevitApp;
-            if (rvtApp == null) throw new InvalidDataException(nameof(rvtApp));
+            if (Directory.Exists(outputFolder))
+                Directory.Delete(outputFolder);
 
-            string modelPath = data.FilePath;
-            if (String.IsNullOrWhiteSpace(modelPath)) throw new InvalidDataException(nameof(modelPath));
-
-            Document doc = data.RevitDoc;
-            if (doc == null) throw new InvalidOperationException("Could not open document.");
-
-            using (Transaction transaction = new Transaction(doc))
+            var outputDir = Directory.CreateDirectory(outputFolder);
+            
+            foreach (var g in entitiesGroupedByType)
             {
-                FilteredElementCollector col = new FilteredElementCollector(doc).OfClass(typeof(Wall));
-                transaction.Start("Delete All Walls");
-                doc.Delete(col.ToElementIds());
-                transaction.Commit();
-            }
+                var json = JsonConvert.SerializeObject(g.ToList());
+                var outputFile = Path.Combine(outputDir.FullName, $"{g.Key}.json");
 
-            ModelPath path = ModelPathUtils.ConvertUserVisiblePathToModelPath("result.rvt");
-            doc.SaveAs(path, new SaveAsOptions());
+                File.WriteAllText(outputFile, json);
+            }
         }
     }
 }
