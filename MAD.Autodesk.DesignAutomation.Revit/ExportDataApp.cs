@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using ADSK.BIT.ModelChecker.API.DataModel;
+using ADSK.BIT.ModelChecker.API.Services.Implementation;
+using ADSK.BIT.ModelChecker.Revit.API.Services.Implementation;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
@@ -33,6 +36,30 @@ namespace MAD.Autodesk.DesignAutomation.Revit
         {
             e.Succeeded = true;
             
+            PerformModelCheckAndSaveResults(e);
+            //ExtractAllEntities(e);
+        }
+
+        private void PerformModelCheckAndSaveResults(DesignAutomationReadyEventArgs e)
+        {
+            var checkSetPath = "https://interoperability.autodesk.com/modelchecker/hostedchecks/dash.xml";
+            var service = new CheckSetService();
+            var checkSet = service.GetCheckSet(checkSetPath);
+            var checker = new DocumentCheckRunner(e.DesignAutomationData.RevitDoc, service);
+            var reportRun = checker.RunChecks(true, checkSet);
+
+            var exporter = new ResultExporterExcel();
+            var options = new ExportOptions
+            {
+                ExportLocation = Path.Combine(this.GetExportDirectory(), "ReportRun.xlsx"),
+                ExportLists = true
+            };
+
+            exporter.ExportReport(reportRun, options);
+        }
+
+        private void ExtractAllEntities(DesignAutomationReadyEventArgs e)
+        {
             var dataReader = new DataReader(e.DesignAutomationData);
             var elementsToSave = dataReader.GetElements().ToList();
             var entitiesToSave = dataReader.GetEntitiesFromElements(elementsToSave).ToList();
@@ -43,13 +70,7 @@ namespace MAD.Autodesk.DesignAutomation.Revit
 
         private void SaveEntitiesToOutput(IEnumerable<IGrouping<string, DataReaderEntity>> entitiesGroupedByType)
         {
-            var currentDir = Directory.GetCurrentDirectory();
-            var outputFolder = Path.Combine(currentDir, "outputJson");
-
-            if (Directory.Exists(outputFolder))
-                Directory.Delete(outputFolder);
-
-            var outputDir = Directory.CreateDirectory(outputFolder);
+            var outputDir = Directory.CreateDirectory(this.GetExportDirectory());
             
             foreach (var g in entitiesGroupedByType)
             {
@@ -58,6 +79,14 @@ namespace MAD.Autodesk.DesignAutomation.Revit
 
                 File.WriteAllText(outputFile, json);
             }
+        }
+
+        private string GetExportDirectory()
+        {
+            var currentDir = Directory.GetCurrentDirectory();
+            var outputFolder = Path.Combine(currentDir, "output");
+
+            return outputFolder;
         }
     }
 }

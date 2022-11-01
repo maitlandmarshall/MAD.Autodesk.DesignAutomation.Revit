@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BIT.ModelChecker.RevitAPI</name>
+    </assembly>
+    <members>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.ObjectRetrieval.GetAllByCategory(Autodesk.Revit.DB.BuiltInCategory,ADSK.BIT.ModelChecker.Revit.API.ObjectRetrieval.ObjectHeirarchy,Autodesk.Revit.DB.Document,System.Boolean,System.Boolean,ADSK.BIT.ModelChecker.Revit.API.ObjectRetrieval.ViewOption)">
+            <summary>
+            Retrieves all elements of a given category.
+            </summary>
+            <param name="cat">The category to find elements in</param>
+            <param name="hierarchy">If instances, types, or both are to be found</param>
+            <param name="doc">The Revit document to be searched.</param>
+            <param name="invert">If this filter is to be inverted</param>
+            <param name="includeGrouped">In grouped elements are to be included</param>
+            <param name="viewOpt">If items need to be view dependent or not.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.ObjectRetrieval.GetAllInstances(Autodesk.Revit.DB.Family,Autodesk.Revit.DB.Document)">
+            <summary>
+            Retrieves all instances of a specific family in the given document
+            </summary>
+            <param name="fam">The family to look for.</param>
+            <param name="doc">The document to search.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.IAutomationHandler">
+            <summary>
+            Interface for handling automated runs
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IAutomationHandler.RunAutomation">
+            <summary>
+            Find and run any automations
+            </summary>
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.AutomationHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.AutomationHandler.#ctor(Autodesk.Revit.ApplicationServices.Application,ADSK.BIT.ModelChecker.API.Services.IAutomatedRunRepository,ADSK.BIT.ModelChecker.API.Services.IResultExporter,ADSK.BIT.ModelChecker.API.Services.IResultExporter,ADSK.BIT.ModelChecker.API.Services.IAutomatedRunLogger,ADSK.BIT.ModelChecker.API.Services.ICheckSetService)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="revitApp">The Revit application</param>
+            <param name="repository">The repository to use to retrieve automated runs</param>
+            <param name="excelExporter">The exporter to use for excel exporting</param>
+            <param name="htmlExporter">The exporter to use for html exporting</param>
+            <param name="logger">The logger to use to log items</param>
+            <param name="checkSetService">Service for getting check sets</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.AutomationHandler.RunAutomation">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckSetLocationRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckSetLocationRepository.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to store data in</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckSetLocationRepository.GetCurrentCheckSetLocation">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckSetLocationRepository.SaveCheckSetLocation(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to run checks on.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.FileSize(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.Purge(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.Warnings(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.FileName(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.PhaseElements(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.Keynotes(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.RevitVersion(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.SharedParametersFile(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.TenLargestFamilies(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.GeneralChecks.GetFullPathRoot(System.String)">
+            <summary>
+            The same as Path.GetPathRoot but it respects non single character roots like BIM 360://
+            </summary>
+            <param name="docPath">The path to get the root from.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to run checks on.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.RasterImages(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.LinkedCad(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.PinnedLinks(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.LinkMethod(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.LinkChecks.ImportedSkp(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ReportRunRepository">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ReportRunRepository.#ctor(Autodesk.Revit.DB.Document,ADSK.BIT.ModelChecker.API.Services.ICheckSetService)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to store data in</param>
+            <param name="checkSetService">The check set service to use</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ReportRunRepository.GetStoredRun">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ReportRunRepository.SaveRun(ADSK.BIT.ModelChecker.API.DataModel.ReportRun)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The document to run checks on.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.ProjectInformation(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.DesignOptions(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.ObjectStyles(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.LineStyles(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.AreaComputation(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.AreaSchemes(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.BrowserOrganization(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.SettingsChecks.ProjectCoordinates(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ViewsChecks">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ViewsChecks.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to run checks on.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ViewsChecks.ViewsNotOnSheets(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ViewsChecks.ViewsHiddenElements(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.ViewsChecks.Legends(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.WorkShareChecks">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.WorkShareChecks.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="doc">The document to run checks on.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.WorkShareChecks.Worksets(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.WorkShareChecks.WorksetPlacement(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.BatchCheckRunner">
+            <inheritdoc />
+        </member>
+        <member name="E:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.BatchCheckRunner.ProgressChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.BatchCheckRunner.#ctor(Autodesk.Revit.ApplicationServices.Application,ADSK.BIT.ModelChecker.API.Services.ICheckSetService)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="revitApplication">The currently running Revit Application</param>
+            <param name="checkSetService">The service to use to retrieve check sets</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.BatchCheckRunner.RunChecks(System.Collections.Generic.IEnumerable{ADSK.BIT.ModelChecker.API.DataModel.FileCheckSetting},ADSK.BIT.ModelChecker.API.DataModel.CheckSet,System.Collections.Generic.List{System.Exception}@)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckRunnerCore">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckRunnerCore.#ctor(Autodesk.Revit.DB.Document,ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService,ADSK.BIT.ModelChecker.API.Services.IGeneralChecks,ADSK.BIT.ModelChecker.API.Services.ILinkChecks,ADSK.BIT.ModelChecker.API.Services.ISettingsChecks,ADSK.BIT.ModelChecker.API.Services.IViewsChecks,ADSK.BIT.ModelChecker.API.Services.IWorkShareChecks)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The <see cref="T:Autodesk.Revit.DB.Document"/> to run checks on.</param>
+            <param name="revitFilterService">Service for providing Revit filters.</param>
+            <param name="generalChecks">Interface for running general predefined checks.</param>
+            <param name="linkChecks">Interface for running link based predefined checks.</param>
+            <param name="settingsChecks">Interface for running settings based predefined checks.</param>
+            <param name="viewsChecks">Interface for running views based predefined checks.</param>
+            <param name="workShareChecks">Interface for running worksharing based predefined checks.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.CheckRunnerCore.RunCheck(ADSK.BIT.ModelChecker.API.DataModel.Check)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.DocumentCheckRunner">
+            <summary>
+            Interface implementation for checking a document with optional link checking.
+            </summary>
+        </member>
+        <member name="E:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.DocumentCheckRunner.ProgressChanged">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.DocumentCheckRunner.#ctor(Autodesk.Revit.DB.Document,ADSK.BIT.ModelChecker.API.Services.ICheckSetService)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The top level <see cref="T:Autodesk.Revit.DB.Document"/> to run checks on.</param>
+            <param name="checkSetService">The service to use to retrieve check sets.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.DocumentCheckRunner.RunChecks(System.Boolean,ADSK.BIT.ModelChecker.API.DataModel.CheckSet,ADSK.BIT.ModelChecker.API.DataModel.ReportRun,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService">
+            <summary>
+            Interface implementation for providing Revit <see cref="T:ElementFilter"/> objects corresponding to Model Checker <see cref="T:ADSK.BIT.ModelChecker.API.DataModel.Filter"/> objects.
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The <see cref="T:Autodesk.Revit.DB.Document"/> to use to construct filters.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetCategoryFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetDesignOptionFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetFamilyFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetTypeOrInstanceFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetLevelFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetPhaseFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetPhaseStatusFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetStructuralTypeFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetApiTypeFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetViewFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetWorksetFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RevitFilterService.GetNoElementsFilter">
+            <summary>
+            Returns a filter that will ensure that no elements match, used for when no elements are found to create filters from
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RunStateRepository">
+            <summary>
+            Repository implementation for storing and retrieving <see cref="T:ADSK.BIT.ModelChecker.API.DataModel.RunState"/> objects
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RunStateRepository.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The document where <see cref="T:ADSK.BIT.ModelChecker.API.DataModel.RunState"/> objects are to be stored.</param>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RunStateRepository.SaveRunState(ADSK.BIT.ModelChecker.API.DataModel.RunState)">
+            <inheritdoc />
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.Implementation.RunStateRepository.GetRunState">
+            <inheritdoc />
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService">
+            <summary>
+            Interface for providing Revit <see cref="T:ElementFilter"/> objects corresponding to Model Checker <see cref="T:ADSK.BIT.ModelChecker.API.DataModel.Filter"/> objects.
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetCategoryFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Category based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetDesignOptionFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Design Option based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetFamilyFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Family based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetTypeOrInstanceFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Type or Instance based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetLevelFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Level based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetPhaseFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Phase based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetPhaseStatusFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Phase Status based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetStructuralTypeFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Structural Type based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetApiTypeFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a API Type based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetViewFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a View based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.Services.IRevitFilterService.GetWorksetFilter(ADSK.BIT.ModelChecker.API.DataModel.Filter)">
+            <summary>
+            Get a Workset based <see cref="T:ElementFilter"/>
+            </summary>
+            <param name="flt">The Model Checker filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.CheckConditionMatch(Autodesk.Revit.DB.Element,ADSK.BIT.ModelChecker.API.DataModel.Filter,Autodesk.Revit.DB.Document,System.Boolean)">
+            <summary>
+            Checks to see if an element matches a particular parameter filter.  Responsible for determining if we are using a BIP
+            or a standard parameter by naming and then checking the appropriate value.
+            </summary>
+            <param name="e">The element being checked</param>
+            <param name="flt">The filter to compare against.</param>
+            <param name="doc">The Revit document to use to get elements if necessary.</param>
+            <param name="hostParameter">If this is a parameter on the host (true) or main object (false)</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.GetParamValue(Autodesk.Revit.DB.Element,System.String,System.Boolean,System.Boolean,Autodesk.Revit.DB.Document)">
+            <summary>
+            Attempts to get the value of a parameter based on it's correct storage type.  Returns empty string if parameter is not found.
+            </summary>
+            <param name="e">The element to look for a parameter on.</param>
+            <param name="paramName">The name of the parameter or the BIP string to look for</param>
+            <param name="getElemNameForIdParams">If the name of an object is to be returned for ElementId parameters.</param>
+            <param name="returnValueStringIfAvailable">If true, will return AsValueString() if available instead of AsString()</param>
+            <param name="doc">The Revit document, only required for elementId parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.GetParamValue(Autodesk.Revit.DB.Parameter,System.Boolean,System.Boolean,Autodesk.Revit.DB.Document)">
+            <summary>
+            Returns the proper string value of a parameter based on it's storage type
+            </summary>
+            <param name="p">The parameter whose value is to be found</param>
+            <param name="getElemNameForIdParams">If the actual element display name is to be returned for parameters
+            with ElementId storage type.  If false, the integer value of the id is returned.</param>
+            <param name="returnValueStringIfAvailable">If true, will return AsValueString() if available instead of AsString()</param>
+            <param name="doc">The Revit document.  Required for elementID storage parameters only.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.CompareCategory(Autodesk.Revit.DB.Category,Autodesk.Revit.DB.BuiltInCategory)">
+            <summary>
+            Checks if a category and a BuiltInCategory are the same
+            </summary>
+            <param name="c">The category</param>
+            <param name="bic">The BuiltInCategory</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.GetElementDisplayName(Autodesk.Revit.DB.Element)">
+            <summary>
+            Gets the display name for an element based on it's type
+            </summary>
+            <param name="e">The element whose name we need</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.GetViewName(Autodesk.Revit.DB.View)">
+            <summary>
+            Gets the name of a view for display based on it's type
+            </summary>
+            <param name="view">The view whose name we need.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.UtilityRevit.FindRevitDoc(Autodesk.Revit.ApplicationServices.Application,System.String,System.Boolean@)">
+            <summary>
+            Attempts to find or open a document file in Revit
+            </summary>
+            <param name="revitApp">The Revit application</param>
+            <param name="filePath">The path to the file to find</param>
+            <param name="closeFile">If the file is to be closed after completion or not.  If file is already open this will return
+            false, if it is not the file will be opened and this value will be true.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker">
+            <summary>
+            Helper class for managing extensible storage for a Revit project.
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker.#ctor(Autodesk.Revit.DB.Document)">
+            <summary>
+            Class Constructor
+            </summary>
+            <param name="doc">The revit document that this manager pertains to</param>
+        </member>
+        <member name="P:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker.StartupError">
+            <summary>
+            Denotes if there was an error starting up the XS Manager (the storage didn't take correctly)
+            </summary>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker.GetFieldData(System.String)">
+            <summary>
+            Retrieves the data stored on the project info object with this schema and for this field name
+            </summary>
+            <param name="fieldName">The name of the field whose data needs to be retrieved.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker.SetFieldData(System.String,System.String)">
+            <summary>
+            Sets the value for a field on the project information object with the schema specified.  Returns a
+            boolean value indicating success or failure
+            </summary>
+            <param name="fieldName">The name of the field whos value is to be set</param>
+            <param name="fieldValue">The new value for the field</param>
+            <returns></returns>
+        </member>
+        <member name="M:ADSK.BIT.ModelChecker.Revit.API.XSManagerModelChecker.InitializeXs">
+            <summary>
+            Initializes this manager by trying to obtain or create the schema
+            </summary>
+        </member>
+    </members>
+</doc>

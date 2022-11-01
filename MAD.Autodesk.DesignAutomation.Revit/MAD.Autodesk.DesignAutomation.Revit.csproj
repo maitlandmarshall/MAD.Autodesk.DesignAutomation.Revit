@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BIT.ModelChecker.API">
+      <HintPath>..\references\BIT.ModelChecker.API.dll</HintPath>
+    </Reference>
+    <Reference Include="BIT.ModelChecker.RevitAPI">
+      <HintPath>..\references\BIT.ModelChecker.RevitAPI.dll</HintPath>
+    </Reference>
     <Reference Include="DesignAutomationBridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Autodesk.Forge.DesignAutomation.Revit.2018.0.1\lib\net47\DesignAutomationBridge.dll</HintPath>
       <Private>True</Private>
