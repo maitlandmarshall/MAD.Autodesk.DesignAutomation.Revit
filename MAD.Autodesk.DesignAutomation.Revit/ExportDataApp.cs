@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
+using System.Xml;
 using ADSK.BIT.ModelChecker.API.DataModel;
 using ADSK.BIT.ModelChecker.API.Services.Implementation;
 using ADSK.BIT.ModelChecker.Revit.API.Services.Implementation;
@@ -42,9 +44,11 @@ namespace MAD.Autodesk.DesignAutomation.Revit
 
         private void PerformModelCheckAndSaveResults(DesignAutomationReadyEventArgs e)
         {
-            var checkSetPath = "https://interoperability.autodesk.com/modelchecker/hostedchecks/dash.xml";
+            var checksetXml = new XmlDocument();
+            checksetXml.Load(typeof(ExportDataApp).Assembly.GetManifestResourceStream("MAD.Autodesk.DesignAutomation.Revit.dash.xml"));
+
             var service = new CheckSetService();
-            var checkSet = service.GetCheckSet(checkSetPath);
+            var checkSet = service.GetCheckSet(checksetXml);
             var checker = new DocumentCheckRunner(e.DesignAutomationData.RevitDoc, service);
             var reportRun = checker.RunChecks(true, checkSet);
 

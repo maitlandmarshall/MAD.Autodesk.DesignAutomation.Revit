@@ -2,11 +2,11 @@
 <RevitAddIns>
   <AddIn Type="DBApplication">
     <Name>MAD.Autodesk.DesignAutomation.Revit</Name>
-    <Assembly>MAD.Autodesk.DesignAutomation.Revit.dll</Assembly>
+    <Assembly>.\MAD.Autodesk.DesignAutomation.Revit.dll</Assembly>
     <AddInId>883708c2-2718-4b61-bb09-494a412abadc</AddInId>
     <FullClassName>MAD.Autodesk.DesignAutomation.Revit.ExportDataApp</FullClassName>
     <Description>"Converts the RVT database into a zip of CSVs"</Description>
-    <VendorId>Autodesk</VendorId>
+    <VendorId>MAIT DEV</VendorId>
     <VendorDescription>
     </VendorDescription>
   </AddIn>

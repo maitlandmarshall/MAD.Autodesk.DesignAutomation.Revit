@@ -64,9 +64,8 @@
     <Compile Include="Services\ZipWriter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PackageContents.xml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
+    <EmbeddedResource Include="dash.xml" />
+    <Content Include="PackageContents.xml" />
     <Content Include="MAD.Autodesk.DesignAutomation.Revit.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
